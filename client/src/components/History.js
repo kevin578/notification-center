@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import Loader from 'react-loader-spinner';
 
 export default class History extends Component {
 
     state = {
-        history: []
+        history: [],
+        isLoading: false
     }
 
     componentDidMount() {
@@ -16,12 +18,6 @@ export default class History extends Component {
         axios.get("/api/getHistory").then((history)=> {
             this.setState({history: history.data})
         })
-    }
-
-    convertYears = (years)=> {
-        let yearString = "";
-        
-        
     }
 
     renderHistory = ()=> {
@@ -37,10 +33,40 @@ export default class History extends Component {
         })
     }
 
+    clearHistory = ()=> {
+        this.setState({isLoading: true});
+        axios.post("/api/deleteHistory").then(()=> {
+            window.location.reload();
+        })
+    }
+
+    renderClearHistory = ()=> {
+        const {state} = this;
+        if (state.isLoading) {
+            return (
+                <div className = "loader">
+                <Loader 
+                type="TailSpin"
+                color="#a0a0a0"
+                height="20"	
+                width="20"
+             /> 
+             </div>
+            )
+        }
+        return (
+            <p className = "clearHistory" onClick = {()=> this.clearHistory()}>Clear history</p>
+        )
+    }
+
     render() {
         return (
             <div className = "historyContainer containers">
+                <div className = "historyHeader">
                 <h3>History</h3>
+                {this.renderClearHistory()}
+   
+                </div>
                 {this.renderHistory()}
             </div>
         )

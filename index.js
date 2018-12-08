@@ -50,6 +50,13 @@ app.get("/api/getHistory", (req, res)=> {
     })
 })
 
+app.post("/api/deleteHistory", (req, res)=> {
+    notificationModel.remove({}, (err, resp)=> {
+        if (err) return res.send(err);
+        res.json(resp);
+    })
+})
+
 // app.post('/api/addDevice', (req, res) => {
 //     const Device = new deviceModel({token: req.body.token});
 //     Device.save(()=> {

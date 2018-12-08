@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 import axios from 'axios';
+
 import "../css/App.css";
 
 const styles = {
@@ -20,7 +22,8 @@ export default class NotificationForm extends Component {
     titleError: false,
     messageError: false,
     yearError: false,
-    formError: false
+    formError: false,
+    isLoading: false
   };
 
   handleInputChange = event => {
@@ -34,7 +37,7 @@ export default class NotificationForm extends Component {
   };
 
   buttonClicked = () => {
-      const {state} = this;
+    const {state} = this;
 
     const hasTitle = (state.title);
     const hasMessage = (state.message);
@@ -48,6 +51,7 @@ export default class NotificationForm extends Component {
 
       if (!hasTitle || !hasMessage || !hasYear) return;
 
+      this.setState({isLoading: true})
       const getYearArray = ()=> {
         const yearArray = [];
         if (state.firstYear) yearArray.push("First Year");
@@ -63,7 +67,6 @@ export default class NotificationForm extends Component {
           link: state.link,
           years: [getYearArray()]
       }).then((res)=> {
-        console.log('resonsse')
         window.location.reload();
       })
 
@@ -71,6 +74,13 @@ export default class NotificationForm extends Component {
 
   render() {
     const { state } = this;
+    const buttonStyles = classNames({
+      "pure-button": true,
+      "pure-button-primary": true,
+      "button": true,
+      "loading": state.isLoading
+    })
+
     return (
       <div>
         <form
@@ -168,8 +178,9 @@ export default class NotificationForm extends Component {
             <input
               type="button"
               value="Send Notification"
-              className="pure-button pure-button-primary button"
+              className={buttonStyles}
               onClick={this.buttonClicked}
+              disabled = {state.isLoading}
             />
 
             {state.formError && (

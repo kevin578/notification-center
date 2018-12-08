@@ -21,6 +21,7 @@ module.exports = function sendMessages(devices, notification) {
       sound: "default",
       title: notification.title,
       body: notification.message,
+      priority: "high",
       data: { withSome: "data" },
       android: {
           icon: "./public/img/icon.png"

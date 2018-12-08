@@ -8,6 +8,7 @@ body {
 
 .historyContainer {
   margin-left: 50px;
+  overflow: scroll;
 }
 
 
@@ -20,6 +21,8 @@ body {
   margin-top: 40px;
   border-radius: 3px;
 }
+
+
 
 .siteTitle {
   margin-left: 30px;
@@ -55,6 +58,23 @@ body {
   transform: scale(.98);
 }
 
+.clearHistory {
+  cursor: pointer;
+  font-size: 10px;
+  transform: translateY(13px);
+  text-decoration: underline;
+}
+
+.loader {
+  position: relative;
+  top: 20px;
+  right: 25px;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+}
 /* Items in History */
 
 .historyItemContainer {
