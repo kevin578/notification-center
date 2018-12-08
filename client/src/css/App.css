@@ -1,0 +1,86 @@
+body {
+  background:#a8b3c4;
+}
+
+.appContainer {
+  display: flex;
+}
+
+.historyContainer {
+  margin-left: 50px;
+}
+
+
+.containers {
+  width: 300px;
+  height: 550px;
+  margin-left: 60px;
+  background: #fff;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 3px;
+}
+
+.siteTitle {
+  margin-left: 30px;
+}
+
+.title {
+  width: 300px;
+}
+
+.message {
+  width: 300px;
+  height: 80px;
+}
+
+.link {
+  width: 300px;
+}
+
+.checkboxes {
+  margin: 20px 0 20px 0;
+}
+
+.label {
+  margin-left: 5px;
+}
+
+.bottomError {
+  margin-top: 10px;
+}
+
+.button:active {
+  transition: .1s;
+  transform: scale(.98);
+}
+
+/* Items in History */
+
+.historyItemContainer {
+  border-bottom: 1px solid #cecece;
+}
+
+.notificationTitle {
+  font-weight: 800;
+}
+
+.notificationMessage {
+  transform: translateY(-10px);
+  font-size: 12px;
+}
+
+.notificationYears {
+  transform: translateY(-15px);
+  font-size: 10px;
+  font-style: italic;
+}
+
+.notificationDate {
+  transform: translateY(-15px);
+  font-size: 10px;
+  font-style: italic;
+}
+
+
+

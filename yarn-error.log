@@ -1,0 +1,46 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn dev
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/kbriggs/.rvm/gems/ruby-2.4.1/bin:/Users/kbriggs/.rvm/gems/ruby-2.4.1@global/bin:/Users/kbriggs/.rvm/rubies/ruby-2.4.1/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/munki:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/kbriggs/.rvm/gems/ruby-2.4.1/bin:/Users/kbriggs/.rvm/gems/ruby-2.4.1@global/bin:/Users/kbriggs/.rvm/rubies/ruby-2.4.1/bin:/Users/kbriggs/.rvm/bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  11.2.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "notification-center",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node index.js",
+      "client": "cd client && yarn start",
+      "server": "nodemon index.js",
+      "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  SyntaxError: /Users/kbriggs/Desktop/notification-center/package.json: Unexpected token } in JSON at position 478
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:770:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:92:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:103:13
