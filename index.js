@@ -57,6 +57,11 @@ app.post("/api/deleteHistory", (req, res)=> {
     })
 })
 
+const path = require("path");
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+
+
 // app.post('/api/addDevice', (req, res) => {
 //     const Device = new deviceModel({token: req.body.token});
 //     Device.save(()=> {
