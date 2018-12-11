@@ -70,13 +70,23 @@ if (process.env.NODE_ENV === "production") {
     });
   }
 
-// app.post('/api/addDevice', (req, res) => {
-//     const Device = new deviceModel({token: req.body.token});
-//     Device.save(()=> {
-//         res.send("done")
-//     })
-// })
+app.post('/api/addDevice', (req, res) => {
+    const Device = new deviceModel({
+        token: req.body.token,
+        timestamp: req.body.timestamp
+    });
+    Device.save(()=> {
+        res.send("done")
+    })
+});
 
+app.post('/api/updateYear', (req,res) => {
+    const {deviceId, year} = req.body;    
+    deviceModel.findOneAndUpdate({deviceId}, {year}, (err, resp)=> {
+        if (err) return res.send(err);
+        res.send(resp);
+    });
+});
 
 
 
