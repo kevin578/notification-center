@@ -1,12 +1,18 @@
 const Expo = require("expo-server-sdk").Expo
 
+
 // Create a new Expo SDK client
 let expo = new Expo();
 
 module.exports = function sendMessages(devices, notification) {
   // Create the messages that you want to send to clents
   let messages = [];
-  for (let device of devices) {
+
+  const filteredDevices = devices.filter((device)=> {
+    return notification.years[0].includes(device.year)
+  })  
+  console.log(filteredDevices)
+  for (let device of filteredDevices) {
     // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
     const pushToken = device.token;
     // Check that all your push tokens appear to be valid Expo push tokens

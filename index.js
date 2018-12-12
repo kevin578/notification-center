@@ -29,18 +29,13 @@ app.post('/api/sendnotification', (req, res)=> {
         date: Date.now()
     });
     Promise.all([
-    deviceModel.findOne({token: "ExponentPushToken[opdDA1CyP16myoZNtPCzwc]"}, (err, devices)=> {
-        sendMessages([devices], req.body)
+    deviceModel.find({}, (err, devices)=> {
+        sendMessages(devices, req.body)
     }),
     newNotification.save()
     ]).then((response)=> {
         res.send(response);
     })
-
-
-    // deviceModel.find({}, (err, devices)=> {
-    //     sendMessages(devices)
-    // })
 })
 
 app.get("/api/getHistory", (req, res)=> {
