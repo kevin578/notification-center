@@ -11,7 +11,7 @@ module.exports = function sendMessages(devices, notification) {
   const filteredDevices = devices.filter((device)=> {
     return notification.years[0].includes(device.year)
   })  
-  console.log(filteredDevices)
+  
   for (let device of filteredDevices) {
     // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
     const pushToken = device.token;
